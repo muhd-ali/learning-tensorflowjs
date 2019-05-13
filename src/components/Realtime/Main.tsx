@@ -1,6 +1,7 @@
 import React from 'react';
-import { withStyles, WithStyles, Theme, Typography } from '@material-ui/core';
-import PaperTemplate from 'components/Templates/Paper/Main';
+import { withStyles, WithStyles, Theme } from '@material-ui/core';
+import LoadingTemplate from 'components/Templates/Loading/Main';
+import Child from './Child';
 
 const styles = (theme: Theme) => ({
     toolbar: theme.mixins.toolbar,
@@ -16,12 +17,9 @@ class Main extends React.Component<MainProps, MainState> {
     render() {
         let { classes, theme } = this.props;
         return (
-            <PaperTemplate theme={theme}>
-                <Typography variant='h1'>
-                    Welcome
-                </Typography>
-
-            </PaperTemplate>
+            <LoadingTemplate theme={theme}>
+                <Child theme={theme}/>
+            </LoadingTemplate>
         )
     }
 }

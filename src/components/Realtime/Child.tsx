@@ -9,7 +9,6 @@ const styles = (theme: Theme) => ({
 });
 type ChildProps = WithStyles<typeof styles> & LoadingNodeProps & {
     theme: Theme,
-    name: string,
 }
 
 interface ChildState {
@@ -18,11 +17,17 @@ interface ChildState {
 
 class Child extends React.Component<ChildProps, ChildState> {
     private canvasRef = React.createRef<HTMLCanvasElement>();
-    
+    private videoRef = React.createRef<HTMLVideoElement>();
+
+    constructor(props: ChildProps) {
+        super(props);
+        this.initCamera();
+    }
+
     async test() {
         // Load the model.
         const model = await cocoSsd.load();
-        this.props.notifyParentThatLoadingFinished!();        
+        this.props.notifyParentThatLoadingFinished!();
 
         // Classify the image.
         const image = new Image();
@@ -38,6 +43,20 @@ class Child extends React.Component<ChildProps, ChildState> {
                 }
             });
         }
+    }
+
+    async initCamera() {
+        const stream = await navigator.mediaDevices.getUserMedia({
+            audio: false,
+            video: {
+                facingMode: "user",
+            }
+        })
+        const video = this.videoRef.current!
+        video.srcObject = stream;
+        video.onloadedmetadata = () => {
+            video.play();
+        };
     }
 
     componentDidMount() {
@@ -56,11 +75,9 @@ class Child extends React.Component<ChildProps, ChildState> {
         let { classes, theme } = this.props;
         return (
             <div>
-                <Typography variant='h1'>
-                    Welcome
-                </Typography>
+                <video ref={this.videoRef} id="vid" width="300" height="300"></video>
                 <canvas ref={this.canvasRef}
-                    width="720" height="480"
+                    width="300" height="300"
                 ></canvas>
             </div>
         )

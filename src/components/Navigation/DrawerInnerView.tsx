@@ -4,7 +4,7 @@ import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
-import { Home as HomeIcon, Settings as SettingsIcon } from '@material-ui/icons';
+import { Home as HomeIcon, Settings as SettingsIcon, CameraAlt as CameraIcon } from '@material-ui/icons';
 import { WithStyles, withStyles, Typography, Card, CardContent, CardActionArea, Link } from '@material-ui/core';
 import { Link as RouterLink } from 'react-router-dom';
 
@@ -45,6 +45,14 @@ class DrawerInnerView extends React.Component<DrawerInnerViewProps, State> {
                 <HomeIcon />
               </ListItemIcon>
               <ListItemText primary={'Homepage'} />
+            </ListItem>
+          </RouterLink>
+          <RouterLink to="/realtime">
+            <ListItem button key={'Real-Time'}>
+              <ListItemIcon>
+                <CameraIcon />
+              </ListItemIcon>
+              <ListItemText primary={'Real-Time'} />
             </ListItem>
           </RouterLink>
           <RouterLink to="/settings">
