@@ -49,10 +49,10 @@ const styles = (theme: Theme) => ({
   },
 });
 
-export type MyAppBarProps = WithStyles<typeof styles> & RouteComponentProps<any, StaticContext, any> & {
+type MyAppBarProps = WithStyles<typeof styles> & RouteComponentProps<any, StaticContext, any> & {
   theme: Theme,
 }
-export interface State {
+interface State {
   isMobileOpen: boolean
 }
 

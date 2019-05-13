@@ -1,29 +1,24 @@
 import React from 'react';
 import { withStyles, WithStyles, Theme, Paper, Grid } from '@material-ui/core';
+import PageTemplate from 'components/Templates/Paper/Main';
 
 const styles = (theme: Theme) => ({
-    toolbar: theme.mixins.toolbar,
+  toolbar: theme.mixins.toolbar,
 });
 export interface MainProps extends WithStyles<typeof styles> {
-    theme: Theme,
-  }
+  theme: Theme,
+}
 class Main extends React.Component<MainProps, {}> {
   render() {
-      let {classes} = this.props;
-      return (
-        <div className={classes.toolbar}>
-            <Grid container spacing={24}>
-                <Grid item xs>
-                    <Paper>
-                        <div style={{padding : '20px'}}>
-                          <h1>Awww...Don’t Cry.</h1>
-                          <h2>"It's just a 404 Error!"</h2>
-                        </div>
-                    </Paper>
-                </Grid>
-            </Grid>
+    let { classes, theme } = this.props;
+    return (
+      <PageTemplate theme={theme}>
+        <div>
+          <h1>Awww...Don’t Cry.</h1>
+          <h2>"It's just a 404 Error!"</h2>
         </div>
-      )
+      </PageTemplate>
+    )
   }
 }
 
