@@ -93,7 +93,6 @@ class Child extends React.Component<ChildProps, {}> {
 
     componentWillUnmount() {
         if (this.stream) {
-            console.log(this.stream);
             this.stream!.getVideoTracks()[0].stop();
         }
     }

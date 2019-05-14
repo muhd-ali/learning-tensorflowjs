@@ -65,6 +65,10 @@ class MyAppBar extends React.Component<MyAppBarProps, State> {
     this.setState(state => ({ isMobileOpen: !state.isMobileOpen }));
   };
 
+  componentWillMount() {
+    document.title = 'Learning Tensorflow-js'
+  }
+
   render() {
     const { classes, theme } = this.props;
     const drawerInnerView = <DrawerInnerView
