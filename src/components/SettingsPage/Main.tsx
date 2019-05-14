@@ -4,9 +4,6 @@ import PageTemplate from 'components/Templates/Paper/Main';
 
 const styles = (theme: Theme) => ({
     toolbar: theme.mixins.toolbar,
-    paddingFix: {
-        padding: '2em'
-    }
 });
 interface MainProps extends WithStyles<typeof styles> {
     theme: Theme,
