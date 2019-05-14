@@ -1,5 +1,5 @@
 import React from 'react';
-import { withStyles, WithStyles, Theme, Paper, Grid } from '@material-ui/core';
+import { withStyles, WithStyles, Theme } from '@material-ui/core';
 import PageTemplate from 'components/Templates/Paper/Main';
 
 const styles = (theme: Theme) => ({
@@ -10,7 +10,7 @@ export interface MainProps extends WithStyles<typeof styles> {
 }
 class Main extends React.Component<MainProps, {}> {
   render() {
-    let { classes, theme } = this.props;
+    let { theme } = this.props;
     return (
       <PageTemplate theme={theme}>
         <div>

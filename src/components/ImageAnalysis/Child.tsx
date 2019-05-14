@@ -2,6 +2,7 @@ import React from 'react';
 import { withStyles, WithStyles, Theme, Grid } from '@material-ui/core';
 import { LoadingNodeProps } from 'components/Templates/Loading/Main';
 import cocoSsd from 'models/CocoSsd';
+import imgSrc from 'images/img2.jpg';
 import { ObjectDetection, DetectedObject } from '@tensorflow-models/coco-ssd';
 
 const styles = (theme: Theme) => ({
@@ -13,15 +14,13 @@ type ChildProps = WithStyles<typeof styles> & LoadingNodeProps & {
 
 class Child extends React.Component<ChildProps, {}> {
     private canvasRef = React.createRef<HTMLCanvasElement>();
-    private videoRef = React.createRef<HTMLVideoElement>();
+    private imageRef = React.createRef<HTMLImageElement>();
     private dims = [1000, 720];
-    private stream?: MediaStream;
 
     renderPredictions(predictions: DetectedObject[]) {
-        
-        const video = this.videoRef.current!
+        const image = this.imageRef.current!
         const canvas = this.canvasRef.current!;
-        if (!video || !canvas) return;
+        if (!image || !canvas) return;
         const ctx = canvas.getContext("2d")!;
         canvas.width = this.dims[0];
         canvas.height = this.dims[1];
@@ -30,7 +29,7 @@ class Child extends React.Component<ChildProps, {}> {
         const font = "16px sans-serif";
         ctx.font = font;
         ctx.textBaseline = "top";
-        ctx.drawImage(video, 0, 0, this.dims[0], this.dims[1]);
+        ctx.drawImage(image, 0, 0, this.dims[0], this.dims[1]);
         predictions.forEach(prediction => {
             // Bounding box
             ctx.strokeStyle = "#00FFFF";
@@ -53,49 +52,24 @@ class Child extends React.Component<ChildProps, {}> {
         });
     };
 
-    startDetection(model: ObjectDetection) {
-        const video = this.videoRef.current!
-        if (!video) return;   
+    runDetection(model: ObjectDetection) {
+        const video = this.imageRef.current!        
         model.detect(video).then(predictions => {
             this.renderPredictions(predictions);
-            requestAnimationFrame(() => {
-                this.startDetection(model);
-            });
         });
     }
 
-    async realTimeTracking() {
-        // Load the model.
+    async imageAnalysis() {
         const model = await cocoSsd.load();
         this.props.notifyParentThatLoadingFinished!();
-        this.initCamera();
-        this.startDetection(model);
-    }
-
-    async initCamera() {
-        this.stream = await navigator.mediaDevices.getUserMedia({
-            audio: false,
-            video: {
-                facingMode: "user",
-            }
-        })
-        const video = this.videoRef.current!
-        if (!video) return;
-        video.srcObject = this.stream;
-        video.onloadedmetadata = () => {
-            video.play();
-        };
+        if (this.imageRef.current) {
+            this.imageRef.current!.src = imgSrc;
+            this.runDetection(model);
+        }
     }
 
     componentDidMount() {
-        this.realTimeTracking();
-    }
-
-    componentWillUnmount() {
-        if (this.stream) {
-            console.log(this.stream);
-            this.stream!.getVideoTracks()[0].stop();
-        }
+        this.imageAnalysis();
     }
 
     render() {
@@ -111,7 +85,7 @@ class Child extends React.Component<ChildProps, {}> {
                         item
                         xs={12}
                     >
-                        <video hidden ref={this.videoRef} width={this.dims[0]} height={this.dims[1]}/>
+                        <img hidden alt='Loading...' ref={this.imageRef} width={this.dims[0]} height={this.dims[1]}/>
                         <canvas ref={this.canvasRef} />
                     </Grid>
                 </Grid>

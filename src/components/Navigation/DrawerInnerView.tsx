@@ -4,21 +4,15 @@ import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
-import { Home as HomeIcon, Settings as SettingsIcon, CameraAlt as CameraIcon } from '@material-ui/icons';
-import { WithStyles, withStyles, Typography, Card, CardContent, CardActionArea, Link } from '@material-ui/core';
+import { Home as HomeIcon, Settings as SettingsIcon, CameraAlt as CameraIcon, Photo as PhotoIcon  } from '@material-ui/icons';
+import { withStyles, Typography, Card, CardContent, CardActionArea, Link } from '@material-ui/core';
 import { Link as RouterLink } from 'react-router-dom';
 
 const styles = {
 }
 
-export interface DrawerInnerViewProps extends WithStyles<typeof styles> {
-}
-export interface State {
-}
-
-class DrawerInnerView extends React.Component<DrawerInnerViewProps, State> {
+class DrawerInnerView extends React.Component<{}, {}> {
   render() {
-    const { classes } = this.props;
     return (
       <div>
         <Card>
@@ -53,6 +47,14 @@ class DrawerInnerView extends React.Component<DrawerInnerViewProps, State> {
                 <CameraIcon />
               </ListItemIcon>
               <ListItemText primary={'Real-Time'} />
+            </ListItem>
+          </RouterLink>
+          <RouterLink to="/imageanalysis">
+            <ListItem button key={'Image Analysis'}>
+              <ListItemIcon>
+                <PhotoIcon />
+              </ListItemIcon>
+              <ListItemText primary={'Image Analysis'} />
             </ListItem>
           </RouterLink>
           <RouterLink to="/settings">

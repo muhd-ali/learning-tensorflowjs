@@ -14,7 +14,7 @@ interface MainState {
 
 class Main extends React.Component<MainProps, MainState> {
     render() {
-        let { classes, theme } = this.props;
+        let { theme } = this.props;
         return (
             <PaperTemplate theme={theme}>
                 <Typography variant='h1'>

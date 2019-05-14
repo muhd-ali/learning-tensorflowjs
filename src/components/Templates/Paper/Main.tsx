@@ -1,7 +1,5 @@
 import React from 'react';
-import { withStyles, WithStyles, Theme, Paper, Grid, Card, CardActionArea, CardContent, Typography } from '@material-ui/core';
-import * as cocoSsd from '@tensorflow-models/coco-ssd';
-import img from 'images/img2.jpg'
+import { withStyles, WithStyles, Theme, Paper } from '@material-ui/core';
 
 const styles = (theme: Theme) => ({
     toolbar: theme.mixins.toolbar,

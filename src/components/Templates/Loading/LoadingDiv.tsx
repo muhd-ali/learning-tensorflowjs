@@ -10,7 +10,6 @@ export interface MainProps extends WithStyles<typeof styles> {
 }
 class Main extends React.Component<MainProps, {}> {
   render() {
-    let { classes, theme } = this.props;
     return (
         <div>
         <Grid
