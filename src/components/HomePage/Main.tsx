@@ -44,22 +44,27 @@ class Main extends React.Component<MainProps, MainState> {
                         xs={12}
                     >
                         <Typography variant='h6'>
-                            Features
+                            Technologies
                         </Typography>
                         <List>
+                        <ListItem>
+                            <Typography variant='body1'>
+                                <a href='https://github.com/microsoft/TypeScript'>Typescript</a> for strictly typed code.
+                            </Typography>
+                            </ListItem>
                             <ListItem>
                                 <Typography variant='body1'>
-                                    Using <a href='http://material-ui.com'>Material-UI</a> for GUI.
+                                    <a href='http://material-ui.com'>Material-UI</a> for GUI.
                                 </Typography>
                             </ListItem>
                             <ListItem>
                                 <Typography variant='body1'>
-                                    Using <a href='https://github.com/ReactiveX/rxjs'>RxJS</a> for putting events on variable changes.
+                                    <a href='https://github.com/ReactiveX/rxjs'>RxJS</a> for putting events on variable changes.
                                 </Typography>
                             </ListItem>
                             <ListItem>
                                 <Typography variant='body1'>
-                                    Using <a href='https://github.com/tensorflow/tfjs-models/tree/master/coco-ssd'>COCO-SSD</a> model for object detection.
+                                    <a href='https://github.com/tensorflow/tfjs-models/tree/master/coco-ssd'>COCO-SSD</a> model for object detection.
                                 </Typography>
                             </ListItem>
                         </List>
