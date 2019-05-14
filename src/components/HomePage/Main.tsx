@@ -51,6 +51,9 @@ class Main extends React.Component<MainProps, MainState> {
                             <Typography variant='body1'>
                                 <a href='https://github.com/microsoft/TypeScript'>Typescript</a> for strictly typed code.
                             </Typography>
+                            <Typography variant='body1'>
+                                <a href='https://www.tensorflow.org/js'>TensorFlow.js</a> for AI toolset.
+                            </Typography>
                             </ListItem>
                             <ListItem>
                                 <Typography variant='body1'>
