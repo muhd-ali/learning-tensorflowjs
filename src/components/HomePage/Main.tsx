@@ -47,13 +47,15 @@ class Main extends React.Component<MainProps, MainState> {
                             Technologies
                         </Typography>
                         <List>
-                        <ListItem>
-                            <Typography variant='body1'>
-                                <a href='https://github.com/microsoft/TypeScript'>Typescript</a> for strictly typed code.
-                            </Typography>
-                            <Typography variant='body1'>
-                                <a href='https://www.tensorflow.org/js'>TensorFlow.js</a> for AI toolset.
-                            </Typography>
+                            <ListItem>
+                                <Typography variant='body1'>
+                                    <a href='https://github.com/microsoft/TypeScript'>Typescript</a> for strictly typed code.
+                                </Typography>
+                            </ListItem>
+                            <ListItem>
+                                <Typography variant='body1'>
+                                    <a href='https://www.tensorflow.org/js'>TensorFlow.js</a> for AI toolset.
+                                </Typography>
                             </ListItem>
                             <ListItem>
                                 <Typography variant='body1'>
@@ -85,7 +87,7 @@ class Main extends React.Component<MainProps, MainState> {
                         <Typography variant='h6'>
                             Github Repo
                         </Typography>
-                        <br/>
+                        <br />
                         <Typography variant='body1'>
                             <a href='https://github.com/muhd-ali/learning-tensorflowjs'>
                                 https://github.com/muhd-ali/learning-tensorflowjs
